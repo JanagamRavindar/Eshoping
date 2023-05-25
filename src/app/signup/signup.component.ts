@@ -38,7 +38,7 @@ export class SignupComponent {
 
   signUp() {
     this.authService.signUp(this.user).then(response => {
-      this.toastr.success('Signup successfully..!!');
+      this.toastr.success('Signup successfully..!');
       this.router.navigate(['/login'])
     });
   }

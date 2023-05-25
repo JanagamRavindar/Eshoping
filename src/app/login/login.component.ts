@@ -48,16 +48,16 @@ export class LoginComponent {
       localStorage.setItem('loggedUserId', userDetails!.id);
       localStorage.setItem('isAdmin', userDetails!.isAdmin ? 'true' : 'false');
 
-      this.toastr.success('Login successfully..!!');
+      this.toastr.success('Login successfully..!');
       this.router.navigate(['/home']);
     }
     else {
-      this.toastr.error('In-valid credentials..!!');
+      this.toastr.error('In-valid credentials..!');
     }
   }
 
   handleError(response: any) {
-    this.toastr.error('In-valid credentials..!!');
+    this.toastr.error('In-valid credentials..!');
   }
 
 }

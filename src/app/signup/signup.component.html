@@ -1,0 +1,49 @@
+<div style="margin-left: 150px;">
+    <img [src]="imgUrl" width="450" height="300" style="margin-top: 100px;">
+</div>
+
+<div class="card">
+    <u>
+        <h5>Sign Up</h5>
+    </u>
+    <form [formGroup]="registrationForm">
+        <div class="mb-3">
+            <input formControlName="username" [(ngModel)]="user.username" type="text" name="Username"
+                class="form-control" style="margin:15;" placeholder="User Name">
+            <label *ngIf="userName?.touched && userName?.invalid" style="color: aliceblue;">*Enetr Username</label>
+        </div>
+        <div class="mb-3">
+            <input formControlName="email" [(ngModel)]="user.email" type="email" name="Email" class="form-control"
+                style="margin:15;" placeholder="Email Adress">
+            <label *ngIf="Email?.touched && Email?.invalid" style="color: aliceblue;">*Enetr Email</label>
+        </div>
+        <div class="mb-3">
+            <input formControlName="mobile" [(ngModel)]="user.mobile" type="number" name="Mobile" class="form-control"
+                style="margin:15;" placeholder="Mobile Number">
+            <label *ngIf="Mobile?.touched && Mobile?.invalid" style="color: aliceblue;">*Enetr Mobile</label>
+        </div>
+        <div class="mb-3">
+            <div>
+                <span>Gender</span>
+            </div>
+            <input formControlName="gender" [(ngModel)]="user.gender" type="radio" name="Gender" value="Male">Male
+            <input formControlName="gender" [(ngModel)]="user.gender" type="radio" value="Female" name="Gender"
+                style="margin-left: 20px;">Female
+            <input formControlName="gender" [(ngModel)]="user.gender" type="radio" value="Others" name="Gender"
+                style="margin-left: 20px;">Others
+        </div>
+        <div class="mb-3">
+            <input formControlName="password" [(ngModel)]="user.password" type="password" name="Password"
+                class="form-control" style="margin:15;" placeholder="Set Password">
+            <label *ngIf="Password?.touched && Password?.invalid" style="color: aliceblue;">*Enetr Password</label>
+        </div>
+        <div class="mb-3">
+            <input formControlName="password" [(ngModel)]="user.password" type="password" class="form-control"
+                name="Password" style="margin:15;" placeholder="Confirm Password">
+            <label *ngIf="Password?.touched && Password?.invalid" style="color: aliceblue;">*Enetr Password</label>
+        </div>
+    </form>
+    <button (click)="signUp()" class="btn btn-success">Submit</button>
+    If you have an account please login
+    <a routerLink="/login" style="color: white;">Login</a>
+</div>

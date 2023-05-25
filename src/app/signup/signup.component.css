@@ -1,0 +1,17 @@
+.card {
+    float: right;
+    margin-top: 10px;
+    margin-left: 250px;
+    border: none;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: hsla(205, 46%, 30%);
+    background: linear-gradient(90eg, hsla(205, 46%, 30%, 1) 0%, hsla(205, 46%, 30%, 1) 100%);
+}
+
+.form-control.ng-touched.ng-invalid {
+    border: 1px solid red;
+}

@@ -1,0 +1,56 @@
+<div class="div1">
+    Catagaries
+    <button (click)=" addCatagary()" data-bs-toggle="modal" data-bs-target="#catagaryModal"
+        style="border: none;float: right;color: blue;">+ADD</button>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Descripition</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    <tr *ngFor="let x of catagaries; index as y">
+        <td>{{y+1}} </td>
+        <td>{{x.name}} </td>
+        <td>{{x.description}} </td>
+        <td>
+            <button (click)="editCatagory(x)" style="border: none;color: green;" data-bs-toggle="modal"
+                data-bs-target="#catagaryModal">EDIT</button>
+        </td>
+        <td>
+            <button (click)="deleteCatagory(x.id)" style="border: none; color: red;">Delete </button>
+        </td>
+    </tr>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="catagaryModal" tabindex="-1" aria-labelledby="catagaryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="catagaryModalLabel">{{Title}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input [(ngModel)]="catagary.name" type="text" name="name" placeholder="Name"
+                            class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <textarea [(ngModel)]="catagary.description" name="descripition" id="description" cols="30"
+                            rows="5" placeholder="Descripition" class="form-control"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="saveMethod()" type="button" class="btn btn-primary"
+                    data-bs-dismiss="modal">SAVE</button>
+            </div>
+        </div>
+    </div>
+</div>

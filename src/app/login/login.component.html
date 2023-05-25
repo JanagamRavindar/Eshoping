@@ -1,0 +1,32 @@
+<div class="card"
+    style="width: 400px;margin: auto;margin-top: 0px;font-family: Georgia, 'Times New Roman', Times, serif;font-weight: bolder;margin-top: 20px;">
+    <div class="card-header" style="text-align: center;color: #88B04B;">
+        <h4>Login</h4>
+    </div>
+    <div class="card-body">
+        <img src="assets/img_avatar2.png"
+            style="width: 100px;height: 100px;border-radius: 50%;margin-left: 35%;margin-bottom: 30px;">
+        <form [formGroup]="loginForm">
+            <div class="mb-3">
+                <input formControlName="email" [(ngModel)]="loginObj.email" type="email" name="Username"
+                    placeholder="Email" class="form-control">
+                <label *ngIf="Email?.touched && Email?.invalid" style="color: red;">*Please enter valid Email</label>
+            </div>
+            <div class="mb-3">
+                <input formControlName="password" [(ngModel)]="loginObj.password" type="password" name="Password"
+                    placeholder="Password" class="form-control">
+                <label *ngIf="Password?.touched && Password?.invalid" style="color: red;">*Please enter valid
+                    Password</label>
+            </div>
+        </form>
+        <button [disabled]="loginForm.invalid" (click)="loginMethod()"> Login </button>
+        <br>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        <div>
+            *If you don't have an account please
+            <p><a class="link-opacity-50-hover" href="signup">Sign-Up</a></p>
+        </div>
+    </div>
+</div>

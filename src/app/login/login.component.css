@@ -1,0 +1,15 @@
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 7px 7px;
+    border-radius: 5px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+.form-control.ng-touched.ng-invalid {
+    border: 1px solid red;
+}

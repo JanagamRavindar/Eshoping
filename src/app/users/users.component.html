@@ -1,0 +1,24 @@
+
+
+<table class="table">
+    <tr>
+        <th>S.no</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>User Name</th>
+        <th>Gender</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr> 
+    <tr *ngFor="let x of users;index as y">
+        <td>{{y + 1}} </td>
+        <td>{{x.email}} </td>
+        <td>{{x.mobile}} </td>
+        <td>{{x.username}} </td>
+        <td>{{x.gender}} </td>
+        <td>{{x.password}} </td>
+        <td>
+            <button (click)="deleteUser(x.id)" style="border: none;color: red;">Remove</button>
+        </td>
+    </tr>
+</table>

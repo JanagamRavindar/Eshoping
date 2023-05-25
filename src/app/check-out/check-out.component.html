@@ -1,0 +1,62 @@
+<div class="card" style="width: 1200px;margin: auto;margin-top: 20px;">
+    <div class="card-header">
+        <h5>Shipping Details</h5>
+    </div>
+    <div class="card-body">
+
+        <table>
+            <tr>
+                <td>
+                    <div class="card" style="width: 500px;margin-top: 30px;">
+                        <div class="card-body">
+                            <h4>Address </h4>
+                            <div class="mb-3">
+                                <input [(ngModel)]="shipping.name" type="text" name="name" placeholder="Name"
+                                    class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <input [(ngModel)]="shipping.addressLine1" type="text" name="name"
+                                    placeholder="Address Line-1" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <input [(ngModel)]="shipping.addressLine2" type="text" name="name"
+                                    placeholder="Address Line-2" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <input [(ngModel)]="shipping.city" type="text" name="name" placeholder="City"
+                                    class="form-control">
+                            </div>
+                            <hr>
+                            <button (click)="PlaceOrder()" class="btn btn-success">Place Order</button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="border-left: 3px solid orange;height: 250px;margin-left: 50px;"> </div>
+                </td>
+                <td>
+                    <div class="card" style="width: 550px;margin-left: 30px;">
+                        <div class="card-body">
+                            <h4 class="card-title">Order Details</h4>
+                            <p class="text">You have {{totalItemCount}} items in your cart. </p>
+                            <ul class="list-group list-group-flush">
+                                <li *ngFor="let x of _cartItems" class="list-group-item">
+                                    {{x.quantity}} x {{x.title}}
+                                    <div class="float-end">
+                                        {{x.totalPrice | currency:'INR'}}
+                                    </div>
+                                </li>
+                                <li class="list-group-item fw-bold">
+                                    TOTAL
+                                    <div class="float-end">
+                                        {{totalPrice | currency:'INR'}}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

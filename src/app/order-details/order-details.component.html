@@ -1,0 +1,57 @@
+<div class="card componentStyle">
+    <div style="margin: 1rem;">
+        <div class="row">
+            <div class="col-6">
+                <h2>Orde Details</h2>
+            </div>
+            <div>
+                <p style="float: right;font-weight: bold;margin-top: 6px !important;">Date: {{orderDetails.datePlaced |
+                    date}}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6 border-line">
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" disabled [value]="orderDetails.shppingDetails.name" name="name"
+                        placeholder="Name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Address</label>
+                    <input type="text" disabled [value]="orderDetails.shppingDetails.addressLine1" name="addressLine1"
+                        placeholder="AdressLine1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for=""></label>
+                    <input type="text" disabled [value]="orderDetails.shppingDetails.addressLine2" name="addressLine2"
+                        placeholder="AddressLine2" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">City</label>
+                    <input type="text" disabled [value]="orderDetails.shppingDetails.city" placeholder="City"
+                        name="city" class="form-control">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card-body">
+                    <h4 class="card-title">Order Summary</h4>
+                    <li *ngFor="let x of orderDetails.items" class="list-group-item">
+                        {{x.quantity}} * {{x.title}}
+                        <div class="float-end">{{x.totalPrice | currency:'INR'}}</div>
+                    </li>
+                    <li class="list-group-item fw-bold">
+                        Total
+                        <div class="float-end">
+                            {{orderDetails.amount | currency:'INR'}}
+                        </div>
+                    </li>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        <a (click)=" redirectToOrdersPage()" class="btn btn-primary ripple-surface"
+            style="min-width: 230px;text-align: center;"><i class="bi bi-arrow-left-circle"></i>BACK TO ORDERS</a>
+    </div>
+</div>

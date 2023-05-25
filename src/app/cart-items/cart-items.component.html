@@ -1,0 +1,58 @@
+<div class="col-11" style="height: 80px;margin-top: 30px;">
+    <button (click)="clearCart()" style="float: right;" class="btn btn-success">Clear chart</button>
+</div>
+
+<table class="table">
+    <tr>
+        <th>S.no</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Catagory</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+
+    </tr>
+    <tr *ngFor="let x of cartItems;index as y">
+        <td>{{y+1}} </td>
+        <td><img src="{{x.imgUrl}}" style="width: 60px;height: 60px;border-radius: 50%;"></td>
+        <td>{{x.title}} </td>
+        <td>{{x.categary}} </td>
+        <td>{{x.price | currency : 'INR'}} </td>
+        <td style="vertical-align: middle;">
+            <div class="row no-gutters">
+                <div class="col-2">
+                    <button (click)="removeFromCart(x)" class="btn btn-secondary btn-block">
+                        <i class="bi bi-dash-lg"></i>
+                    </button>
+                </div>
+                <div class="col text-center quantity">
+                    {{ x.quantity }} in cart
+                </div>
+                <div class="col-2">
+                    <button (click)="addToCart(x)" class="btn btn-secondary btn-block">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </td>
+        <td>{{x.totalPrice | currency : 'INR'}} </td>
+
+    </tr>
+    <tr>
+        <th> Total Amout</th>
+        <td> </td>
+        <td> </td>
+        <td></td>
+        <td> </td>
+        <td> </td>
+        <th>{{totalPrice | currency: 'INR' }} </th>
+    </tr>
+</table>
+
+<div *ngIf="totalItemsCount > 0" style="float: left;">
+    <a routerLink="/home" style="margin-left: 30px;"> Add more items </a>
+</div>
+<div style="float: right;">
+    <button (click)="checkOut()" class="btn btn-secondary" style="margin-right: 50px;">Check out</button>
+</div>

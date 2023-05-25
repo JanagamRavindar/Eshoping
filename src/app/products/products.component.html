@@ -1,0 +1,69 @@
+<div style="width: 100%;height:35px;background-color:lightgray;line-height: 35px;">
+    <button (click)="addProduct()" data-bs-toggle="modal" data-bs-target="#productModal" class="addbttn"> +ADD </button>
+</div>
+
+<table class="table">
+    <tr>
+        <th>S.no</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Categary</th>
+        <th>Image</th>
+    </tr>
+    <tr *ngFor="let x of products | paginate: { itemsPerPage: 5, currentPage: currentPage } ; index as y ">
+        <td>{{y+1}} </td>
+        <td>{{x.title}} </td>
+        <td>{{x.price}} </td>
+        <td>{{x.categary}} </td>
+        <td><img src="{{x.imgUrl}}" width="50" height="50"></td>
+        <td style="width: 20%;">
+            <button (click)="updateProduct(x)" data-bs-toggle="modal" data-bs-target="#productModal"
+                style="border: none; color: orange;">Update</button>
+            <button (click)="deleteProduct(x.id)" style="border: none; color: red ">Delete</button>
+            <button style="border: none; color: green">Details</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6"><pagination-controls (pageChange)="currentPage = $event"></pagination-controls></td>
+    </tr>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="productModalLabel">{{Title}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <input [(ngModel)]="product.title" type="text" name="title" class="form-control"
+                            placeholder="Title">
+                    </div>
+                    <div class="mb-3">
+                        <input [(ngModel)]="product.price" type="number" name="price" class="form-control"
+                            placeholder="Price">
+                    </div>
+                    <div class="mb-3">
+                        <select [(ngModel)]="product.categary" name="categary" class="form-control">
+                            <option>--Select Category--</option>
+                            <option *ngFor="let x of catagaries" [ngValue]="x.name">{{x.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input [(ngModel)]="product.imgUrl" type="text" name="imgUrl" class="form-control"
+                            placeholder="Image URL">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="submitMethod()" type="button" data-bs-dismiss="modal"
+                    class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
